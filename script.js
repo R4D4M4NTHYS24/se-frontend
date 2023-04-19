@@ -1,30 +1,15 @@
 const formulario = document.querySelector("form");
 let form = document.querySelector("#formulario");
-/*
-const nombreInput = document.querySelector("#nombre");
-const cedulaInput = document.querySelector("#cedula");
-const telefonoInput = document.querySelector("#telefono");
-*/
-const listaUsuarios = document.querySelector("#lista-usuarios");
-
-let usuarios = [];
-
-//////////////////////////////////////
 
 const nombreInput = document.getElementById("nombre");
 const cedulaInput = document.getElementById("cedula");
 const telefonoInput = document.getElementById("telefono");
 
-// Agregar listener para validar el formulario al hacer submit
-formulario.addEventListener("submit", (event) => {
-  if (!formulario.checkValidity()) {
-    event.preventDefault(); // Prevenir el envío del formulario si no es válido
-    // Mostrar los mensajes de error
-    nombreInput.reportValidity();
-    cedulaInput.reportValidity();
-    telefonoInput.reportValidity();
-  }
-});
+const listaUsuarios = document.querySelector("#lista-usuarios");
+
+let usuarios = [];
+
+//////////Validacion de cada campo del formulario///////////////////////////////
 
 // Agregar listener para validar el campo de nombre
 nombreInput.addEventListener("invalid", () => {
@@ -46,10 +31,11 @@ cedulaInput.addEventListener("input", () => {
   cedulaInput.setCustomValidity("");
 });
 
+// Agregar listener para validar el campo de Telefono
 telefonoInput.addEventListener("input", function () {
   if (telefonoInput.value.length !== 10) {
     telefonoInput.setCustomValidity(
-      "El teléfono debe tener exactamente 10 dígitos"
+      "Solo se permite ingresar caracteres numéricos y el teléfono debe tener exactamente 10 dígitos"
     );
   } else {
     telefonoInput.setCustomValidity("");
@@ -59,14 +45,14 @@ telefonoInput.addEventListener("input", function () {
 telefonoInput.addEventListener("invalid", function () {
   if (telefonoInput.value.length !== 10) {
     telefonoInput.setCustomValidity(
-      "El teléfono debe tener exactamente 10 dígitos"
+      "Solo se permite ingresar caracteres numéricos y el teléfono debe tener exactamente 10 dígitos"
     );
   } else {
     telefonoInput.setCustomValidity("");
   }
 });
 
-//////validacion del formulario///////////////
+//////validacion del formulario completo///////////////
 
 function validarFormularioCompleto() {
   let formularioValido = true;
