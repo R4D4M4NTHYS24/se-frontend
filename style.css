@@ -120,3 +120,19 @@ th {
 #guardar:hover {
   background-color: #750008;
 }
+
+/* Estilo base para los tooltips */
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  display: none;
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  font-size: 12px;
+}
+
+/* Estilo para mostrar los tooltips al hacer hover */
+[data-tooltip]:hover::before {
+  display: block;
+}

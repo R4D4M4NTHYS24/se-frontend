@@ -1,48 +1,95 @@
 const formulario = document.querySelector("form");
 let form = document.querySelector("#formulario");
-
+/*
 const nombreInput = document.querySelector("#nombre");
 const cedulaInput = document.querySelector("#cedula");
 const telefonoInput = document.querySelector("#telefono");
+*/
 const listaUsuarios = document.querySelector("#lista-usuarios");
 
 let usuarios = [];
 
-// Función para validar el campo "Cédula"
-function validarCedula(cedula) {
-  const regex = /^[0-9]{9}$/;
+//////////////////////////////////////
 
-  return regex.test(cedula);
-}
+const nombreInput = document.getElementById("nombre");
+const cedulaInput = document.getElementById("cedula");
+const telefonoInput = document.getElementById("telefono");
 
-// Función para validar el campo "Teléfono"
-function validarTelefono(telefono) {
-  const regex = /^[0-9]{9}$/;
-  return regex.test(telefono);
-}
+// Agregar listener para validar el formulario al hacer submit
+formulario.addEventListener("submit", (event) => {
+  if (!formulario.checkValidity()) {
+    event.preventDefault(); // Prevenir el envío del formulario si no es válido
+    // Mostrar los mensajes de error
+    nombreInput.reportValidity();
+    cedulaInput.reportValidity();
+    telefonoInput.reportValidity();
+  }
+});
 
-// Función para validar el formulario
-function validarFormulario() {
-  let errores = [];
+// Agregar listener para validar el campo de nombre
+nombreInput.addEventListener("invalid", () => {
+  nombreInput.setCustomValidity("Por favor, ingresa tu nombre.");
+});
 
-  if (nombreInput.value.trim() === "") {
-    errores.push('El campo "Nombre" es obligatorio');
+nombreInput.addEventListener("input", () => {
+  nombreInput.setCustomValidity("");
+});
+
+// Agregar listener para validar el campo de cédula
+cedulaInput.addEventListener("invalid", () => {
+  cedulaInput.setCustomValidity(
+    "Solo se permite ingresar caracteres numéricos y un máximo de 9 dígitos"
+  );
+});
+
+cedulaInput.addEventListener("input", () => {
+  cedulaInput.setCustomValidity("");
+});
+
+telefonoInput.addEventListener("input", function () {
+  if (telefonoInput.value.length !== 10) {
+    telefonoInput.setCustomValidity(
+      "El teléfono debe tener exactamente 10 dígitos"
+    );
+  } else {
+    telefonoInput.setCustomValidity("");
+  }
+});
+
+telefonoInput.addEventListener("invalid", function () {
+  if (telefonoInput.value.length !== 10) {
+    telefonoInput.setCustomValidity(
+      "El teléfono debe tener exactamente 10 dígitos"
+    );
+  } else {
+    telefonoInput.setCustomValidity("");
+  }
+});
+
+//////validacion del formulario///////////////
+
+function validarFormularioCompleto() {
+  let formularioValido = true;
+
+  if (!formulario.checkValidity()) {
+    formularioValido = false;
+    // Mostrar los mensajes de error
+    nombreInput.reportValidity();
+    cedulaInput.reportValidity();
+    telefonoInput.reportValidity();
   }
 
-  if (!validarCedula(cedulaInput.value)) {
-    errores.push('El campo "Cédula" debe tener 9 dígitos');
+  if (telefonoInput.value.length !== 10) {
+    formularioValido = false;
+    telefonoInput.setCustomValidity(
+      "El teléfono debe tener exactamente 10 dígitos"
+    );
+    telefonoInput.reportValidity();
+  } else {
+    telefonoInput.setCustomValidity("");
   }
 
-  if (!validarTelefono(telefonoInput.value)) {
-    errores.push('El campo "Teléfono" debe tener el formato XXX-XXX-XXXX');
-  }
-
-  if (errores.length > 0) {
-    alert(errores.join("\n"));
-    return false;
-  }
-
-  return true;
+  return formularioValido;
 }
 
 // Función para agregar un usuario a la lista
@@ -72,7 +119,7 @@ function guardarUsuarioEnJSON(usuario) {
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
   console.log("ejecute");
-  if (validarFormulario()) {
+  if (validarFormularioCompleto()) {
     const usuario = {
       nombre: nombreInput.value.trim(),
       cedula: cedulaInput.value.trim(),

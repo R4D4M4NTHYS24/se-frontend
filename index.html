@@ -14,29 +14,49 @@
       alt="Sistemas Expertos"
     />
     <form id="formulario">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required />
+      <label for="nombre" class="tooltip">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        data-tooltip="Introduce tu nombre"
+        required
+        oninvalid="this.setCustomValidity('Por favor, ingresa tu nombre.')"
+        oninput="setCustomValidity('')"
+      />
 
-      <label for="cedula">Cédula:</label>
+      <label
+        for="cedula"
+        title="Solo se permite ingresar caracteres numéricos y un máximo de 9 dígitos"
+        >Cédula:</label
+      >
       <input
         type="text"
         id="cedula"
         name="cedula"
-        pattern="[0-9]{9}"
         required
+        pattern="[0-9]{1,9}"
+        oninvalid="this.setCustomValidity('Solo se permite ingresar caracteres numéricos y un máximo de 9 dígitos')"
+        oninput="setCustomValidity('')"
       />
 
-      <label for="telefono">Teléfono:</label>
+      <label
+        for="telefono"
+        title="Solo se permite ingresar caracteres numéricos y un máximo de 9 dígitos"
+        >Teléfono:</label
+      >
       <input
         type="tel"
         id="telefono"
         name="telefono"
-        pattern="[0-9]{9}"
         required
+        oninvalid="this.setCustomValidity('Debes ingresar 10 digitos')"
+        oninput="setCustomValidity('')"
       />
 
       <button type="submit" id="guardar">Guardar</button>
     </form>
+
     <div class="titulo">
       <h1>Total Usuarios</h1>
     </div>
