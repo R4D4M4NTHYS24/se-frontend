@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de información personal</title>
+  </head>
+  <body>
+    <img
+      class="logo_image"
+      src="//sistemas-expertos.com/wp-content/uploads/2022/08/logoSE_Original.png"
+      alt="Sistemas Expertos"
+    />
+    <form id="formulario">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="cedula">Cédula:</label>
+      <input
+        type="text"
+        id="cedula"
+        name="cedula"
+        pattern="[0-9]{9}"
+        required
+      />
+
+      <label for="telefono">Teléfono:</label>
+      <input
+        type="tel"
+        id="telefono"
+        name="telefono"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        required
+      />
+
+      <button type="submit" id="guardar">Guardar</button>
+    </form>
+    <div class="titulo">
+      <h1>Total Usuarios</h1>
+    </div>
+    <table id="tablaUsuarios">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cédula</th>
+          <th>Teléfono</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
