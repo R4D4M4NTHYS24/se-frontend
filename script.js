@@ -23,7 +23,7 @@ nombreInput.addEventListener("input", () => {
 // Agregar listener para validar el campo de cédula
 cedulaInput.addEventListener("invalid", () => {
   cedulaInput.setCustomValidity(
-    "Solo se permite ingresar caracteres numéricos y un máximo de 9 dígitos"
+    "Solo se permite ingresar caracteres numéricos y un máximo de 10 dígitos"
   );
 });
 
