@@ -17,7 +17,7 @@ function validarCedula(cedula) {
 
 // Función para validar el campo "Teléfono"
 function validarTelefono(telefono) {
-  const regex = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+  const regex = /^[0-9]{9}$/;
   return regex.test(telefono);
 }
 
