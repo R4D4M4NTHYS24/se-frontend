@@ -68,7 +68,7 @@ function validarFormularioCompleto() {
   if (telefonoInput.value.length !== 10) {
     formularioValido = false;
     telefonoInput.setCustomValidity(
-      "El teléfono debe tener exactamente 10 dígitos"
+      "Solo se permite ingresar caracteres numéricos y el teléfono debe tener exactamente 10 dígitos"
     );
     telefonoInput.reportValidity();
   } else {
