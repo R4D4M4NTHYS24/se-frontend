@@ -56,7 +56,7 @@ function agregarUsuario(usuario) {
 function guardarUsuarioEnJSON(usuario) {
   usuarios.push(usuario);
 
-  fetch("http://localhost:3000/usuarios", {
+  fetch("https://usuarios-se-production.up.railway.app/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
